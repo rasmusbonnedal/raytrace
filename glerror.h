@@ -1,6 +1,8 @@
 #pragma once
 #include <GL/gl3w.h>
 
+#include <iostream>
+
 static const char* gl_error_to_string(GLenum err)
 {
     switch(err)

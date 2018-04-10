@@ -19,8 +19,17 @@ ENDIF ()
 
 ADD_EXECUTABLE(raytrace
 	main.cpp
+	color.h
+	glerror.h
 	glinit.cpp
+	glinit.h
 	gltextureblitter.cpp
+	gltextureblitter.h
+	intersection.h
+	ray.h
+	raytracer.cpp
+	raytracer.h
+	vecmath.h
 	imgui/imgui.cpp
 	imgui/imgui_draw.cpp
 	imgui/examples/libs/gl3w/GL/gl3w.c

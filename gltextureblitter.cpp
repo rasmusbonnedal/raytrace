@@ -31,7 +31,7 @@ void GLTextureBlitter::blit()
     CHECK_GL(glBindFramebuffer(GL_READ_FRAMEBUFFER, m_fbo));
     CHECK_GL(glBindTexture(GL_TEXTURE_2D, m_texture));
     CHECK_GL(glFramebufferTexture(GL_READ_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, m_texture, 0));
-    CHECK_GL(glBlitFramebuffer(0, 0, m_width - 1, m_height - 1, 0, 0, m_width - 1, m_height - 1, GL_COLOR_BUFFER_BIT, GL_NEAREST));
+    CHECK_GL(glBlitFramebuffer(0, 0, m_width, m_height, 0, 0, m_width, m_height, GL_COLOR_BUFFER_BIT, GL_NEAREST));
 }
 
 void GLTextureBlitter::deinit()
