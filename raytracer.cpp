@@ -45,15 +45,50 @@ class Scene
 public:
     Scene() {}
 
-    Scene(Vec3d center, double radius)
-        : m_center(center), m_radius2(radius * radius)
+    void addSphere(Vec3d center, double radius)
     {
+        m_spheres.push_back(Sphere(center, radius * radius));
     }
+
     bool intersect(const Ray& ray, Intersection& inters)
     {
-        Vec3d L = ray.origin - m_center;
+        double best_t = 1e30;
+        Sphere* best_sphere = 0;
+
+        for (auto& sphere : m_spheres)
+        {
+            double t;
+            if (intersectSphere(ray, sphere, t) && t < best_t)
+            {
+                best_t = t;
+                best_sphere = &sphere;
+            }
+        }
+        if (best_sphere)
+        {
+            inters.intersection = ray.origin + ray.direction * best_t;
+            inters.normal = inters.intersection - best_sphere->center;
+            inters.normal.normalize();
+        }
+        return best_sphere != 0;
+    }
+
+private:
+    struct Sphere
+    {
+        Sphere(const Vec3d& center, double radius2)
+            : center(center), radius2(radius2)
+        {
+        }
+        Vec3d center;
+        double radius2;
+    };
+
+    bool intersectSphere(const Ray& ray, const Sphere& s, double& t)
+    {
+        Vec3d L = ray.origin - s.center;
         double b = 2 * ray.direction.dot(L);
-        double c = L.dot(L) - m_radius2;
+        double c = L.dot(L) - s.radius2;
         double discr = b * b - 4 * c;
         double x0, x1;
         if (discr < 0)
@@ -74,15 +109,11 @@ public:
             x0 = x1;
             if (x0 < 0) return false;
         }
-        inters.intersection = ray.origin + ray.direction * x0;
-        inters.normal = inters.intersection - m_center;
-        inters.normal.normalize();
+        t = x0;
         return true;
     }
 
-private:
-    Vec3d m_center;
-    double m_radius2;
+    std::vector<Sphere> m_spheres;
 };
 
 class RayTracerImpl
@@ -124,7 +155,9 @@ void RayTracerImpl::init(int width, int height)
     m_width = width;
     m_height = height;
     m_camera = Camera(Vec2d(0.036, 0.024), 0.050, Vec2i(m_width, m_height));
-    m_scene = Scene(Vec3d(0, 0, 6), 1);
+    m_scene.addSphere(Vec3d(0, 0, 6), 1);
+    m_scene.addSphere(Vec3d(0, -20, 6), 19);
+
 }
 
 void RayTracerImpl::start()
