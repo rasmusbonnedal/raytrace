@@ -2,7 +2,7 @@
 
 #include <math.h>
 
-template<class T>
+template <class T>
 class Vec2
 {
 public:
@@ -10,10 +10,7 @@ public:
 
     Vec2() {}
 
-    Vec2(const Vec2& v)
-    {
-        *this = v;
-    }
+    Vec2(const Vec2& v) { *this = v; }
 
     Vec2(const T& x, const T& y) : x(x), y(y) {}
 
@@ -24,28 +21,16 @@ public:
         return *this;
     }
 
-    Vec2 operator+(const Vec2& v)
-    {
-        return Vec3(x + v.x, y + v.y);
-    }
+    Vec2 operator+(const Vec2& v) { return Vec3(x + v.x, y + v.y); }
 
-    Vec2 operator-(const Vec2& v)
-    {
-        return Vec2(x - v.x, y - v.y);
-    }
+    Vec2 operator-(const Vec2& v) { return Vec2(x - v.x, y - v.y); }
 
-    Vec2 operator*(const T& s)
-    {
-        return Vec2(x * s, y * s);
-    }
+    Vec2 operator*(const T& s) { return Vec2(x * s, y * s); }
 
-    Vec2 operator/(const T& s)
-    {
-        return Vec2(x / s, y / s);
-    }
+    Vec2 operator/(const T& s) { return Vec2(x / s, y / s); }
 };
 
-template<class T>
+template <class T>
 class Vec3
 {
 public:
@@ -53,10 +38,7 @@ public:
 
     Vec3() {}
 
-    Vec3(const Vec3& v)
-    {
-        *this = v;
-    }
+    Vec3(const Vec3& v) { *this = v; }
 
     Vec3(const T& x, const T& y, const T& z) : x(x), y(y), z(z) {}
 
@@ -78,25 +60,13 @@ public:
         return Vec3(x - v.x, y - v.y, z - v.z);
     }
 
-    Vec3 operator*(const T& s) const
-    {
-        return Vec3(x * s, y * s, z * s);
-    }
+    Vec3 operator*(const T& s) const { return Vec3(x * s, y * s, z * s); }
 
-    Vec3 operator/(const T& s) const
-    {
-        return Vec3(x / s, y / s, z / s);
-    }
+    Vec3 operator/(const T& s) const { return Vec3(x / s, y / s, z / s); }
 
-    T dot(const Vec3& v) const
-    {
-        return v.x * x + v.y * y + v.z * z;
-    }
+    T dot(const Vec3& v) const { return v.x * x + v.y * y + v.z * z; }
 
-    void normalize()
-    {
-        *this = *this / sqrt(this->dot(*this));
-    }
+    void normalize() { *this = *this / sqrt(this->dot(*this)); }
 };
 
 typedef Vec2<int> Vec2i;

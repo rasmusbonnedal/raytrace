@@ -6,9 +6,9 @@
 
 #include <GLFW/glfw3.h>
 
+#include <math.h>
 #include <algorithm>
 #include <atomic>
-#include <math.h>
 #include <mutex>
 #include <thread>
 #include <vector>
@@ -158,7 +158,6 @@ void RayTracerImpl::init(int width, int height)
     m_camera = Camera(Vec2d(0.036, 0.024), 0.050, Vec2i(m_width, m_height));
     m_scene.addSphere(Vec3d(0, 0, 6), 1);
     m_scene.addSphere(Vec3d(0, -20, 6), 19);
-
 }
 
 void RayTracerImpl::start()

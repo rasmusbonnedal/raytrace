@@ -15,6 +15,7 @@ public:
     unsigned char* lockFramebuffer();
     void unlockFramebuffer();
     double getFPS() const;
+
 private:
     std::unique_ptr<RayTracerImpl> m_impl;
 };

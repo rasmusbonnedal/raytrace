@@ -3,7 +3,6 @@
 #include "imgui.h"
 #include "imgui_impl_glfw_gl3.h"
 
-
 #include <iostream>
 
 static void error_callback(int error, const char* description)
@@ -13,12 +12,10 @@ static void error_callback(int error, const char* description)
 
 GLInit::GLInit() : m_window(0) {}
 
-GLInit::~GLInit()
-{
-    deinit();
-}
+GLInit::~GLInit() { deinit(); }
 
-void GLInit::init(const std::string &window_name, int width, int height, bool useImgui)
+void GLInit::init(const std::string& window_name, int width, int height,
+                  bool useImgui)
 {
     m_useImgui = useImgui;
     glfwSetErrorCallback(error_callback);
@@ -48,10 +45,7 @@ void GLInit::init(const std::string &window_name, int width, int height, bool us
     }
 }
 
-bool GLInit::shouldClose()
-{
-    return glfwWindowShouldClose(m_window);
-}
+bool GLInit::shouldClose() { return glfwWindowShouldClose(m_window); }
 
 void GLInit::beginFrame()
 {

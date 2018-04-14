@@ -23,7 +23,7 @@ int main(int, char**)
     texBlit.init(720, 480);
 
     while (!glState.shouldClose())
-    {  
+    {
         texBlit.update(raytracer.lockFramebuffer());
         raytracer.unlockFramebuffer();
 
@@ -32,8 +32,11 @@ int main(int, char**)
 
         ImGui::Begin("ImGui Window");
         ImGui::Button("Button");
-        ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-        ImGui::Text("Render average %.1f ms/frame (%.1f FPS)", 1000.0 / raytracer.getFPS(), raytracer.getFPS());
+        ImGui::Text("Application average %.3f ms/frame (%.1f FPS)",
+                    1000.0f / ImGui::GetIO().Framerate,
+                    ImGui::GetIO().Framerate);
+        ImGui::Text("Render average %.1f ms/frame (%.1f FPS)",
+                    1000.0 / raytracer.getFPS(), raytracer.getFPS());
         ImGui::End();
         glState.endFrame();
     }

@@ -10,7 +10,8 @@ class GLInit
 public:
     GLInit();
     ~GLInit();
-    void init(const std::string &window_name, int width, int height, bool useImgui);
+    void init(const std::string &window_name, int width, int height,
+              bool useImgui);
     bool shouldClose();
     void beginFrame();
     void endFrame();

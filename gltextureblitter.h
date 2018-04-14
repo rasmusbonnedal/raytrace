@@ -11,7 +11,7 @@ public:
     void blit();
 
 private:
-	void deinit();
+    void deinit();
     GLuint m_texture, m_fbo;
     int m_width, m_height;
 };
