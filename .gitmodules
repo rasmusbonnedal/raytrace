@@ -4,3 +4,6 @@
 [submodule "glfw"]
 	path = glfw
 	url = https://github.com/glfw/glfw.git
+[submodule "modules/variant"]
+	path = modules/variant
+	url = https://github.com/mapbox/variant.git

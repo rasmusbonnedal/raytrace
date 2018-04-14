@@ -4,6 +4,7 @@ SET(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "")
 SET(GLFW_BUILD_TESTS OFF CACHE BOOL "")
 SET(GLFW_BUILD_DOCS OFF CACHE BOOL "")
 SET(GLFW_INSTALL OFF CACHE BOOL "")
+ADD_SUBDIRECTORY(modules)
 ADD_SUBDIRECTORY(glfw)
 SET(GLFW_INCLUDE_DIRS glfw/include)
 LIST(APPEND GLFW_LIBRARIES glfw)
@@ -30,12 +31,16 @@ ADD_EXECUTABLE(raytrace
 	ray.h
 	raytracer.cpp
 	raytracer.h
+	settings.cpp
+	settings.h
 	vecmath.h
 	imgui/imgui.cpp
 	imgui/imgui_draw.cpp
 	imgui/examples/libs/gl3w/GL/gl3w.c
 	imgui/examples/opengl3_example/imgui_impl_glfw_gl3.cpp
 )
+
+target_link_libraries(raytrace variant)
 
 IF (APPLE)
    FIND_LIBRARY(COCOA_LIBRARY Cocoa)
