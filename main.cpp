@@ -33,7 +33,7 @@ int main(int, char**)
         ImGui::Begin("ImGui Window");
         ImGui::Button("Button");
         ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-        ImGui::Text("Render average %.3f ms/frame (%.1f FPS)", 1.0 / raytracer.getFPS(), raytracer.getFPS());
+        ImGui::Text("Render average %.1f ms/frame (%.1f FPS)", 1000.0 / raytracer.getFPS(), raytracer.getFPS());
         ImGui::End();
         glState.endFrame();
     }
