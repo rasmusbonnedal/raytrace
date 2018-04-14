@@ -8,6 +8,7 @@
 
 #include <algorithm>
 #include <atomic>
+#include <math.h>
 #include <mutex>
 #include <thread>
 #include <vector>
