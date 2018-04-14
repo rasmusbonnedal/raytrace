@@ -1,8 +1,8 @@
 [submodule "imgui"]
-	path = imgui
+	path = modules/imgui
 	url = https://github.com/ocornut/imgui.git
 [submodule "glfw"]
-	path = glfw
+	path = modules/glfw
 	url = https://github.com/glfw/glfw.git
 [submodule "modules/variant"]
 	path = modules/variant
