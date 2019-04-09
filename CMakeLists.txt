@@ -42,6 +42,8 @@ ADD_EXECUTABLE(raytrace
 	gltextureblitter.cpp
 	gltextureblitter.h
 	intersection.h
+    objparser.cpp
+    objparser.h
 	ray.h
 	raytracer.cpp
 	raytracer.h

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <algorithm>
+
 template<class T>
 class Vec2
 {
@@ -91,12 +93,35 @@ public:
         return v.x * x + v.y * y + v.z * z;
     }
 
+    Vec3 cross(const Vec3& v) const
+    {
+        return Vec3(
+            y * v.z - z * v.y,
+            z * v.x - x * v.z,
+            x * v.y - y * v.x);
+    }
+
     void normalize()
     {
         *this = *this / sqrt(this->dot(*this));
     }
 };
 
+template<class T>
+Vec3<T> vmin(const Vec3<T>& v1, const Vec3<T>& v2) {
+    return Vec3<T>(std::min(v1.x, v2.x),
+        std::min(v1.y, v2.y),
+        std::min(v1.z, v2.z));
+}
+
+template<class T>
+Vec3<T> vmax(const Vec3<T>& v1, const Vec3<T>& v2) {
+    return Vec3<T>(std::max(v1.x, v2.x),
+        std::max(v1.y, v2.y),
+        std::max(v1.z, v2.z));
+}
+
 typedef Vec2<int> Vec2i;
 typedef Vec2<double> Vec2d;
+typedef Vec3<unsigned> Vec3u;
 typedef Vec3<double> Vec3d;
